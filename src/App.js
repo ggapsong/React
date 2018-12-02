@@ -1,12 +1,17 @@
 import React,{Component} from "react";
+import {connect} from 'react-redux'
 import Li from  "./li";
-export default class App extends Component {
+class App extends Component {
     state = {
         val:"",
         lis:[
             
         ]
     }
+    componentDidMount = () => {
+      console.log(this.props)
+    }
+    
    //添加li
     add(){
         //输入为空
@@ -154,3 +159,12 @@ export default class App extends Component {
         
     }
 }
+
+// mapStateToProps：将state映射到组件的props中
+const mapStateToProps = (state) => {
+    return {
+        lis: state.lis,
+    }
+}
+
+export default connect(mapStateToProps)(App)
